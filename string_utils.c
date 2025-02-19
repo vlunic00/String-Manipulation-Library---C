@@ -1,6 +1,7 @@
 #include "string_utils.h"
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 
 size_t string_length(const char *str){
@@ -46,5 +47,39 @@ void string_to_lower(char *str) {
     if (str == NULL) return;
     for (size_t i = 0; str[i] != '\0'; i++) {
         str[i] = tolower(str[i]);
+    }
+}
+
+char *string_trim(const char *str) {
+    if (str == NULL) return NULL;
+
+    size_t start = 0;
+    while (isspace((unsigned char)str[start])) {
+        start++;
+    }
+
+    size_t end = string_length(str);
+    while (end > start && isspace((unsigned char)str[end - 1])) {
+        end--;
+    }
+
+    size_t trimmed_len = end - start;
+    char *trimmed_str = (char *)malloc(trimmed_len + 1);
+    if (trimmed_str == NULL) return NULL;
+
+    memcpy(trimmed_str, str + start, trimmed_len);
+    trimmed_str[trimmed_len] = '\0';
+
+    return trimmed_str;
+}
+
+void string_reverse(char *str) {
+    if (str == NULL) return;
+
+    size_t len = string_length(str);
+    for (size_t i = 0; i < len / 2; i++) {
+        char temp = str[i];
+        str[i] = str[len - 1 - i];
+        str[len - 1 - i] = temp;
     }
 }
