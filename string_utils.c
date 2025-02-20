@@ -83,3 +83,29 @@ void string_reverse(char *str) {
         str[len - 1 - i] = temp;
     }
 }
+
+char *remove_char(const char *str, const char removing_char){
+    if (str == NULL) return NULL;
+    size_t original_length = string_length(str);
+    size_t altered_length = original_length;
+
+    for(int i = 0; i < original_length; i++){
+        if(str[i] == removing_char){
+            altered_length--;
+        }
+    }
+
+    char *altered_str = (char *)malloc(altered_length + 1);
+    int current_index = 0;
+    
+    for (int i = 0; i < original_length; i++){
+        if(str[i] != removing_char){
+            altered_str[current_index] = str[i];
+            current_index++;
+        }
+    }
+
+    altered_str[altered_length] = '\0';
+
+    return altered_str;
+}
