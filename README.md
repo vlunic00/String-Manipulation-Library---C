@@ -9,4 +9,5 @@ The library currently has the following functions:<br>
 - `void string_to_lower(char *str)` - Checks if str is NULL before calling the tolower() function
 - `char *string_trim(const char *str);` - Removes whitespace from beginning and end of a given string
 - `void string_reverse(char *str);` - Reverses the given string in place
--  `char *remove_char(const char *str, const char removing_char);` - Removes all instances of a specified char in a given string
+- `char *remove_char(const char *str, const char removing_char);` - Removes all instances of a specified char in a given string
+- `int num_of_words(const char *str);` - Returns the number of words in a given string
