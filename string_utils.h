@@ -11,5 +11,6 @@ void string_to_lower(char *str);
 char *string_trim(const char *str);
 void string_reverse(char *str);
 char *remove_char(const char *str, const char removing_char);
+int num_of_words(const char *str);
 
 #endif

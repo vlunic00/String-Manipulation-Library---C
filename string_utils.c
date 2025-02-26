@@ -2,6 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 
 size_t string_length(const char *str){
@@ -108,4 +109,21 @@ char *remove_char(const char *str, const char removing_char){
     altered_str[altered_length] = '\0';
 
     return altered_str;
+}
+
+int num_of_words(const char *str){
+    if (str == NULL) return 0;
+    size_t str_len = string_length(str);
+    int word_counter = 0;
+    bool can_be_new_word = true;
+        for(int i = 0; i < str_len; i++){
+            if(str[i] != ' ' && can_be_new_word){
+                word_counter++;
+                can_be_new_word = false;
+            }
+            else if(str[i] == ' ' && !can_be_new_word){
+                can_be_new_word = true;
+            }
+        }
+    return word_counter;
 }
